@@ -1,0 +1,29 @@
+services:
+  - type: worker
+    name: dark-ghost-telegram-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        value: "@DarkGhostStore_Bot"
+      - key: ADMIN_ID
+        value: "7531023551"
+      - key: ADMIN_CONTACT
+        value: "@DGM100K"
+      - key: BOT_MODE
+        value: "owner"
+      - key: BOT_DB_PATH
+        value: "/opt/render/project/src/client_bots/Cuibcc.db"
+      - key: BOT_LOG_FILE
+        value: "/opt/render/project/src/client_bots/bot_activity.log"
+      - key: RESELLER_API_KEY
+        sync: false
+      - key: RESELLER_MASTER_KEY
+        sync: false
+    disk:
+      name: bot-data
+      mountPath: /opt/render/project/src/client_bots
+      sizeGB: 1
